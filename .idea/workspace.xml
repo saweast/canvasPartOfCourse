@@ -40,16 +40,12 @@
       <file leaf-file-name="canvas.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/canvas.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="532">
-              <caret line="290" column="0" selection-start-line="290" selection-start-column="0" selection-end-line="290" selection-end-column="0" />
+            <state relative-caret-position="376">
+              <caret line="316" column="33" selection-start-line="316" selection-start-column="33" selection-end-line="316" selection-end-column="33" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
                 <element signature="e#88#729#0" expanded="false" />
                 <element signature="e#747#1345#0" expanded="false" />
-                <element signature="e#1984#2523#0" expanded="false" />
-                <element signature="e#2582#2637#0" expanded="false" />
-                <element signature="e#2698#2893#0" expanded="false" />
-                <marker date="1462202747164" expanded="true" signature="8780:9275" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -184,12 +180,12 @@
       <workItem from="1462093450763" duration="37000" />
       <workItem from="1462093488516" duration="9124000" />
       <workItem from="1462102837093" duration="12906000" />
-      <workItem from="1462193598369" duration="9159000" />
+      <workItem from="1462193598369" duration="11743000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31307000" />
+    <option name="totallyTimeSpent" value="33891000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1376" height="780" extended-state="0" />
@@ -259,10 +255,6 @@
             <element signature="e#0#42#0" expanded="false" />
             <element signature="e#88#729#0" expanded="false" />
             <element signature="e#747#1345#0" expanded="false" />
-            <element signature="e#1984#2523#0" expanded="false" />
-            <element signature="e#2582#2637#0" expanded="false" />
-            <element signature="e#2698#2893#0" expanded="false" />
-            <marker date="1462202747164" expanded="true" signature="8780:9275" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -291,10 +283,6 @@
             <element signature="e#0#42#0" expanded="false" />
             <element signature="e#88#729#0" expanded="false" />
             <element signature="e#747#1345#0" expanded="false" />
-            <element signature="e#1984#2523#0" expanded="false" />
-            <element signature="e#2582#2637#0" expanded="false" />
-            <element signature="e#2698#2893#0" expanded="false" />
-            <marker date="1462202747164" expanded="true" signature="8780:9275" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -361,16 +349,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/canvas.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="532">
-          <caret line="290" column="0" selection-start-line="290" selection-start-column="0" selection-end-line="290" selection-end-column="0" />
+        <state relative-caret-position="376">
+          <caret line="316" column="33" selection-start-line="316" selection-start-column="33" selection-end-line="316" selection-end-column="33" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
             <element signature="e#88#729#0" expanded="false" />
             <element signature="e#747#1345#0" expanded="false" />
-            <element signature="e#1984#2523#0" expanded="false" />
-            <element signature="e#2582#2637#0" expanded="false" />
-            <element signature="e#2698#2893#0" expanded="false" />
-            <marker date="1462202747164" expanded="true" signature="8780:9275" placeholder="..." />
           </folding>
         </state>
       </provider>

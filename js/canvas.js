@@ -120,7 +120,7 @@ window.onload = function () {
                 w: 0
             };
         for (top in tops) {
-            drawCircle(tops[top].x, tops[top].y, tops[top].name, canvas);
+            drawCircle(tops[top].x, tops[top].y, tops[top].name, canvasElement);
         }
         for (edge in edges) {
             line.from = edges[edge][0] - 1;
@@ -130,7 +130,7 @@ window.onload = function () {
             line.x2 = tops[line.to].x;
             line.y2 = tops[line.to].y;
             line.w = weight[edge];
-            drawLine(line.x1, line.y1, line.x2, line.y2, "", canvas);
+            drawLine(line.x1, line.y1, line.x2, line.y2, "", canvasElement);
         }
     }
     function drawCircle(x, y, name, canvasElement) {
@@ -166,18 +166,12 @@ window.onload = function () {
 
     function findAllCycles() {
         var i, j, len;
-
-        // var st1 = new Date().getTime();
-
         for (i = 0; i < edges.length; i++) {
             var edge = edges[i];
             for (j = 0; j < 2; j++) {
                 findNewCycles( [edge[j]] );
             }
         }
-
-        // var st2 = new Date().getTime();
-        // console.log("time: " + (st2-st1));
     };
 
     function findNewCycles(path) {
@@ -247,7 +241,6 @@ window.onload = function () {
 
     drawAll(canvas);
     findAllCycles();
-    // console.log(JSON.stringify(cycles));
     function createCanvas(idName) {
         var newCanvas = document.createElement('canvas');
         newCanvas.setAttribute('width', ''+canvasWidth / 2+'');
@@ -260,12 +253,6 @@ window.onload = function () {
         var resultGraph,
             resultTop,
             item,
-            // newGraph = {
-            //     number: 0,
-            //     x: 0,
-            //     y: 0,
-            //     name: ''
-            // },
             newLine = {
                 from: 0,
                 to: 0,
@@ -287,16 +274,6 @@ window.onload = function () {
             drawLine(newLine.x1, newLine.y1, newLine.x2, newLine.y2, '', canvasItem);
             drawCircle(newLine.x1, newLine.y1, newLine.name, canvasItem)
         }
-        resultGraph = resultTop = 0;
-        // for (resultGraph in resultArray) { // сдесь я делаю вершины
-        //     for (resultTop in resultArray[resultGraph]) {
-        //         newGraph.number = resultArray[resultGraph][resultTop] - 1;
-        //         newGraph.x = tops[newGraph.number].x / 2;
-        //         newGraph.y = tops[newGraph.number].y / 2;
-        //         newGraph.name = tops[newGraph.number].name;
-        //         drawCircle(newGraph.x, newGraph.y, newGraph.name, canvasItem);
-        //     }
-        // }
     }
     function makeResult(number, resultArray) {
         for (item in resultArray) { //превратил в нужный вид результат
@@ -304,14 +281,48 @@ window.onload = function () {
             resultArray[item].push(firstItem);
         }
         var item, element, string = 'canvasResult__', idName;
-        for (item = 0; item <= number; item++) {
+        for (item = 0; item <= number-1; item++) {
             idName = string + item;
             createCanvas(idName);
             element = document.getElementById(idName);
-            console.log(element);
             createResultGraph(cycles, element, item);
         }
     }
     makeResult(cycles.length, cycles);
-
+    makeListener(cycles.length);
+    function makeListener(number) {
+        var item, string = 'canvasResult__', element, resString;
+        for (item = 0; item < number; item++) {
+            resString = string + item;
+            element = document.getElementById(resString);
+            element.addEventListener('mousedown', function (event) {
+                var dx, dy, item;
+                dx = event.pageX - this.offsetLeft;
+                dy = event.pageY - this.offsetTop;
+                for (item in tops) {
+                    if (dx >= tops[item].x / 2 + radius || dx <= tops[item].x / 2 - radius
+                        &&
+                        dy >= tops[item].y / 2 + radius || dy <= tops[item].y / 2 - radius) {
+                        drag = false;
+                        currElement = '';
+                    } else {
+                        drag = true;
+                        currElement = item;
+                        return [currElement, drag];
+                    }
+                }
+            });
+            element.addEventListener('mouseup', function (event) {
+                drag = false;
+                currElement = '';
+            });
+            element.addEventListener('mousemove', function (event) {
+                if (drag) {
+                    tops[currElement].x = event.pageX - this.offsetLeft;
+                    tops[currElement].y = event.pageY - this.offsetTop;
+                    drawAll(element);
+                }
+            });
+        }
+    }
 };
