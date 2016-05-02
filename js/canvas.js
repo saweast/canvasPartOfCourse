@@ -101,10 +101,11 @@ window.onload = function () {
         if (drag) {
             tops[currElement].x = event.pageX - this.offsetLeft;
             tops[currElement].y = event.pageY - this.offsetTop;
-            drawAll();
+            drawAll(canvas);
         }
     });
-    function drawAll() {
+    function drawAll(canvasElement) {
+        var ctx = canvasElement.getContext('2d');
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
         var top = 0,
             edge = 0,
@@ -119,7 +120,7 @@ window.onload = function () {
                 w: 0
             };
         for (top in tops) {
-            drawCircle(tops[top].x, tops[top].y, tops[top].name);
+            drawCircle(tops[top].x, tops[top].y, tops[top].name, canvas);
         }
         for (edge in edges) {
             line.from = edges[edge][0] - 1;
@@ -129,10 +130,11 @@ window.onload = function () {
             line.x2 = tops[line.to].x;
             line.y2 = tops[line.to].y;
             line.w = weight[edge];
-            drawLine(line.x1, line.y1, line.x2, line.y2, line.w)
+            drawLine(line.x1, line.y1, line.x2, line.y2, "", canvas);
         }
     }
-    function drawCircle(x, y, name) {
+    function drawCircle(x, y, name, canvasElement) {
+        var ctx = canvasElement.getContext('2d');
         ctx.beginPath();
         ctx.arc(x, y, radius, 0, Math.PI*2, true);
         ctx.fillStyle = circleColor;
@@ -145,7 +147,8 @@ window.onload = function () {
         ctx.fillText(name, x, y-15);
         ctx.closePath();
     }
-    function drawLine(x1, y1, x2, y2, weight) {
+    function drawLine(x1, y1, x2, y2, weight, canvasElement) {
+        var ctx = canvasElement.getContext('2d');
         var weight = weight || '';
         ctx.beginPath();
         ctx.strokeStyle = lineColor;
@@ -242,63 +245,73 @@ window.onload = function () {
     }
 
 
-    drawAll();
+    drawAll(canvas);
     findAllCycles();
     // console.log(JSON.stringify(cycles));
-
-    function createResultCanvas(resultArray) {
+    function createCanvas(idName) {
         var newCanvas = document.createElement('canvas');
         newCanvas.setAttribute('width', ''+canvasWidth / 2+'');
         newCanvas.setAttribute('height', ''+canvasHeight / 2+'');
-        newCanvas.setAttribute('class', 'resultCanvas');
+        newCanvas.setAttribute('id', idName);
         var resultBlock = document.getElementsByClassName('result')[0];
         resultBlock.appendChild(newCanvas);
-        var resultCanvasArray = document.getElementsByClassName('resultCanvas');
-        var resultCanvas = resultCanvasArray[resultCanvasArray.length];
-
+    }
+    function createResultGraph(resultArray, canvasItem, number) {
         var resultGraph,
             resultTop,
             item,
-            newGraph = {
-                number: 0,
-                x: 0,
-                y: 0,
-                name: ''
-            },
+            // newGraph = {
+            //     number: 0,
+            //     x: 0,
+            //     y: 0,
+            //     name: ''
+            // },
             newLine = {
                 from: 0,
                 to: 0,
                 x1: 0,
                 y1: 0,
+                name: '',
                 x2: 0,
                 y2: 0
             };
-        for (item in resultArray) {
+
+        for (resultTop = 1; resultTop < resultArray[number].length; resultTop++) { // ето линии
+            newLine.from = resultArray[number][resultTop-1] - 1;
+            newLine.to = resultArray[number][resultTop] - 1;
+            newLine.x1 = tops[newLine.from].x / 2;
+            newLine.y1 = tops[newLine.from].y / 2;
+            newLine.name = tops[newLine.from].name;
+            newLine.x2 = tops[newLine.to].x / 2;
+            newLine.y2 = tops[newLine.to].y / 2;
+            drawLine(newLine.x1, newLine.y1, newLine.x2, newLine.y2, '', canvasItem);
+            drawCircle(newLine.x1, newLine.y1, newLine.name, canvasItem)
+        }
+        resultGraph = resultTop = 0;
+        // for (resultGraph in resultArray) { // сдесь я делаю вершины
+        //     for (resultTop in resultArray[resultGraph]) {
+        //         newGraph.number = resultArray[resultGraph][resultTop] - 1;
+        //         newGraph.x = tops[newGraph.number].x / 2;
+        //         newGraph.y = tops[newGraph.number].y / 2;
+        //         newGraph.name = tops[newGraph.number].name;
+        //         drawCircle(newGraph.x, newGraph.y, newGraph.name, canvasItem);
+        //     }
+        // }
+    }
+    function makeResult(number, resultArray) {
+        for (item in resultArray) { //превратил в нужный вид результат
             var firstItem = resultArray[item][0];
             resultArray[item].push(firstItem);
         }
-        console.log(JSON.stringify(resultArray));
-        for (resultGraph = 0; resultGraph < resultArray.length; resultGraph++) { // тут я делаю линии
-            for (resultTop = 1; resultTop < resultArray[resultGraph].length; resultTop++) {
-                newLine.from = resultArray[resultGraph][resultTop-1] - 1;
-                newLine.to = resultArray[resultGraph][resultTop] - 1;
-                newLine.x1 = tops[newLine.from].x;
-                newLine.y1 = tops[newLine.from].y;
-                newLine.x2 = tops[newLine.to].x;
-                newLine.y2 = tops[newLine.to].y;
-                // console.log(newLine.from+" "+newLine.to)
-            }
-        }
-        resultGraph = resultTop = 0;
-        for (resultGraph in resultArray) { // сдесь я делаю вершины
-            for (resultTop in resultArray[resultGraph]) {
-                newGraph.number = resultArray[resultGraph][resultTop] - 1;
-                newGraph.x = tops[newGraph.number].x;
-                newGraph.y = tops[newGraph.number].y;
-                newGraph.name = tops[newGraph.number].name;
-            }
+        var item, element, string = 'canvasResult__', idName;
+        for (item = 0; item <= number; item++) {
+            idName = string + item;
+            createCanvas(idName);
+            element = document.getElementById(idName);
+            console.log(element);
+            createResultGraph(cycles, element, item);
         }
     }
-    createResultCanvas(cycles);
+    makeResult(cycles.length, cycles);
 
 };
