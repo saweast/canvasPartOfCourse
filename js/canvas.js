@@ -2,67 +2,10 @@
  * Created by lavor on 01.05.2016.
  */
 window.onload = function () {
-    var tops = [
-            {
-                x: 50,
-                y: 50,
-                name: 'One'
-            },
-            {
-                x: 350,
-                y: 100,
-                name: 'Two'
-            },
-            {
-                x: 50,
-                y: 480,
-                name: 'Three'
-            },
-            {
-                x: 250,
-                y: 400,
-                name: 'Four'
-            },
-            {
-                x: 380,
-                y: 350,
-                name: 'Five'
-            },
-            {
-                x: 150,
-                y: 250,
-                name: 'Six'
-            }
-        ],
-        edges = [
-            [1,2], // 14
-            [1,3], // 19
-            [1,6], // 18
-            [2,1], // 14
-            [2,3], // 3
-            [2,4], // 24
-            [2,5], // 8
-            [2,6], // 2
-            [3,1], // 19
-            [3,2], // 3
-            [3,4], // 7
-            [3,6], // 9
-            [4,2], // 24
-            [4,3], // 7
-            [4,5], // 36
-            [4,6], // 4
-            [5,2], // 8
-            [5,4], // 36
-            [5,6], // 19
-            [6,1], // 18
-            [6,2], // 2
-            [6,3], // 9
-            [6,4], // 4
-            [6,5] // 19
-        ],
-        weight = [14,19,18,14,3,24,8,2,19,3,7,9,24,7,36,4,8,36,19,18,2,9,4,19],
 
-
+    var tops = getJSONFile('tops'),
+        edges = getJSONFile('edges'),
+        weight = getJSONFile('weight'),
         radius = 5,
         lineColor = 'rgba(0, 173, 255, .5)',
         lineDescrColor = 'rgba(0, 0, 255, 1)',
@@ -75,6 +18,7 @@ window.onload = function () {
         canvasWidth = canvas.width,
         canvasHeight = canvas.height,
         ctx = canvas.getContext('2d');
+
 
     canvas.addEventListener('mousedown', function (event) {
         var dx, dy, item;
@@ -325,4 +269,22 @@ window.onload = function () {
             });
         }
     }
+
+
+    function getJSONFile(name) {
+        var json = null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': name+".json",
+            'dataType': "json",
+            'success': function (data) {
+                json = data;
+            }
+        });
+        return json;
+    }
+    // var tops1 = getJSONFile('tops');
+
+
 };
