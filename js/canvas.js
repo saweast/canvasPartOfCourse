@@ -16,9 +16,7 @@ window.onload = function () {
         drag = false, currElement,
         canvas = document.getElementsByClassName('mainDraw')[0],
         canvasWidth = canvas.width,
-        canvasHeight = canvas.height,
-        ctx = canvas.getContext('2d');
-
+        canvasHeight = canvas.height;
 
     canvas.addEventListener('mousedown', function (event) {
         var dx, dy, item;
@@ -48,6 +46,10 @@ window.onload = function () {
             drawAll(canvas);
         }
     });
+    function clearAll(canvasElement) {
+        var ctx = canvasElement.getContext('2d');
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+    }
     function drawAll(canvasElement) {
         var ctx = canvasElement.getContext('2d');
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
@@ -180,9 +182,7 @@ window.onload = function () {
         }
 
         return true;
-    }
-
-
+    };
     drawAll(canvas);
     findAllCycles();
     function createCanvas(idName) {
@@ -191,12 +191,13 @@ window.onload = function () {
         newCanvas.setAttribute('height', ''+canvasHeight / 2+'');
         newCanvas.setAttribute('id', idName);
         var resultBlock = document.getElementsByClassName('result')[0];
-        resultBlock.appendChild(newCanvas);
+        var consistBlock = document.getElementById(idName);
+        if (!consistBlock) {
+            resultBlock.appendChild(newCanvas);
+        }
     }
     function createResultGraph(resultArray, canvasItem, number) {
-        var resultGraph,
-            resultTop,
-            item,
+        var resultTop,
             newLine = {
                 from: 0,
                 to: 0,
@@ -206,7 +207,6 @@ window.onload = function () {
                 x2: 0,
                 y2: 0
             };
-
         for (resultTop = 1; resultTop < resultArray[number].length; resultTop++) { // ето линии
             newLine.from = resultArray[number][resultTop-1] - 1;
             newLine.to = resultArray[number][resultTop] - 1;
@@ -229,48 +229,14 @@ window.onload = function () {
             idName = string + item;
             createCanvas(idName);
             element = document.getElementById(idName);
+            clearAll(element);
             createResultGraph(cycles, element, item);
         }
     }
-    makeResult(cycles.length, cycles);
-    makeListener(cycles.length);
-    function makeListener(number) {
-        var item, string = 'canvasResult__', element, resString;
-        for (item = 0; item < number; item++) {
-            resString = string + item;
-            element = document.getElementById(resString);
-            element.addEventListener('mousedown', function (event) {
-                var dx, dy, item;
-                dx = event.pageX - this.offsetLeft;
-                dy = event.pageY - this.offsetTop;
-                for (item in tops) {
-                    if (dx >= tops[item].x / 2 + radius || dx <= tops[item].x / 2 - radius
-                        &&
-                        dy >= tops[item].y / 2 + radius || dy <= tops[item].y / 2 - radius) {
-                        drag = false;
-                        currElement = '';
-                    } else {
-                        drag = true;
-                        currElement = item;
-                        return [currElement, drag];
-                    }
-                }
-            });
-            element.addEventListener('mouseup', function (event) {
-                drag = false;
-                currElement = '';
-            });
-            element.addEventListener('mousemove', function (event) {
-                if (drag) {
-                    tops[currElement].x = event.pageX - this.offsetLeft;
-                    tops[currElement].y = event.pageY - this.offsetTop;
-                    drawAll(element);
-                }
-            });
-        }
-    }
-
-
+    var justDoIt = document.getElementsByClassName('makeResult')[0];
+    justDoIt.addEventListener('click', function () {
+        makeResult(cycles.length, cycles);
+    });
     function getJSONFile(name) {
         var json = null;
         $.ajax({
@@ -284,7 +250,4 @@ window.onload = function () {
         });
         return json;
     }
-    // var tops1 = getJSONFile('tops');
-
-
 };
