@@ -7,6 +7,7 @@ window.onload = function () {
         edges = getJSONFile('edges'),
         weight = getJSONFile('weight'),
         radius = 5,
+        imageSrc = ['Apartment-Building', 'Contract', 'Factory', 'House', 'House-Rent', 'House-Sale', 'Lands', 'Mortgage', 'Office-Building', 'Swimming-Pool'],
         lineColor = 'rgba(0, 173, 255, .5)',
         lineDescrColor = 'rgba(0, 0, 255, 1)',
         lineDescrFont = '10px serif',
@@ -66,7 +67,8 @@ window.onload = function () {
                 w: 0
             };
         for (top in tops) {
-            drawCircle(tops[top].x, tops[top].y, tops[top].name, canvasElement);
+            drawImage(tops[top].x, tops[top].y, tops[top].name, canvasElement, imageSrc[tops[top].imageN]);
+            // drawCircle(tops[top].x, tops[top].y, tops[top].name, canvasElement);
         }
         for (edge in edges) {
             line.from = edges[edge][0] - 1;
@@ -220,10 +222,12 @@ window.onload = function () {
             newLine.x1 = tops[newLine.from].x / 2;
             newLine.y1 = tops[newLine.from].y / 2;
             newLine.name = tops[newLine.from].name;
+            newLine.img = imageSrc[tops[newLine.from].imageN];
             newLine.x2 = tops[newLine.to].x / 2;
             newLine.y2 = tops[newLine.to].y / 2;
             drawLine(newLine.x1, newLine.y1, newLine.x2, newLine.y2, '', canvasItem);
-            drawCircle(newLine.x1, newLine.y1, newLine.name, canvasItem)
+            // drawCircle(newLine.x1, newLine.y1, newLine.name, canvasItem);
+            drawImage(newLine.x1, newLine.y1, newLine.name, canvasItem, newLine.img);
         }
     }
     function makeResult(number, resultArray) {
@@ -243,10 +247,16 @@ window.onload = function () {
     var justDoIt = document.getElementsByClassName('makeResult')[0];
     justDoIt.addEventListener('click', function () {
         makeResult(cycles.length, cycles);
+        // сюда надо реквест делать
+        // console.log(JSON.stringify(tops));
+        for (item in tops) {
+            $.post( "", tops[item]);
+        }
+
     });
     function getJSONFile(name) {
         var json = null;
-        $.ajax({
+        $.post({
             'async': false,
             'global': false,
             'url': name+".json",
@@ -257,4 +267,23 @@ window.onload = function () {
         });
         return json;
     }
+
+
+    function drawImage(x, y, name, canvasElement, imageSrc) {
+        var ctx = canvasElement.getContext('2d');
+        ctx.beginPath();
+        var img = new Image();
+        img.onload = function(){
+            ctx.drawImage(img, x-18, y-18, 36, 36);
+        };
+        img.src = 'img/'+imageSrc+'.png' || 'img/airplane-shape.png';
+        ctx.font = circleNameFont;
+        ctx.textAlign = 'center';
+        ctx.fillStyle = circleNameColor;
+        ctx.fillText(name, x, y-15);
+        ctx.closePath();
+    }
+
+
+
 };

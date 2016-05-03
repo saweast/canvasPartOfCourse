@@ -1,3 +1,9 @@
 .mainDraw {
     margin: 0 auto;
 }
+.result {
+    text-align: center;
+}
+.result_canvas {
+    display: inline-block;
+}
