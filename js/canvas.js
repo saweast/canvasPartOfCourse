@@ -8,12 +8,12 @@ window.onload = function () {
         weight = getJSONFile('weight'),
         radius = 5,
         imageSrc = ['Apartment-Building', 'Contract', 'Factory', 'House', 'House-Rent', 'House-Sale', 'Lands', 'Mortgage', 'Office-Building', 'Swimming-Pool'],
-        lineColor = 'rgba(0, 173, 255, .5)',
+        lineColor = '#515151',
         lineDescrColor = 'rgba(0, 0, 255, 1)',
-        lineDescrFont = '10px serif',
+        lineDescrFont = '12px Noto sans',
         circleColor = 'rgba(0, 173, 255, 1)',
-        circleNameColor = 'rgba(0, 0, 255, 1)',
-        circleNameFont = '12px serif',
+        circleNameColor = '#515151',
+        circleNameFont = '14px Noto sans',
         drag = false, currElement,
         canvas = document.getElementsByClassName('mainDraw')[0],
         canvasWidth = canvas.width,
@@ -191,7 +191,7 @@ window.onload = function () {
         var newDiv = document.createElement('div');
         newDiv.setAttribute('class', 'result_canvas');
         var caption = document.createElement('p');
-        var text = document.createTextNode('Цикл #'+(item+1));
+        var text = document.createTextNode('Маршрут #'+(item+1));
         var newCanvas = document.createElement('canvas');
         newCanvas.setAttribute('width', ''+canvasWidth / 2+'');
         newCanvas.setAttribute('height', ''+canvasHeight / 2+'');
