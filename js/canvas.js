@@ -185,7 +185,11 @@ window.onload = function () {
     };
     drawAll(canvas);
     findAllCycles();
-    function createCanvas(idName) {
+    function createCanvas(idName, item) {
+        var newDiv = document.createElement('div');
+        newDiv.setAttribute('class', 'result_canvas');
+        var caption = document.createElement('p');
+        var text = document.createTextNode('Цикл #'+(item+1));
         var newCanvas = document.createElement('canvas');
         newCanvas.setAttribute('width', ''+canvasWidth / 2+'');
         newCanvas.setAttribute('height', ''+canvasHeight / 2+'');
@@ -193,7 +197,10 @@ window.onload = function () {
         var resultBlock = document.getElementsByClassName('result')[0];
         var consistBlock = document.getElementById(idName);
         if (!consistBlock) {
-            resultBlock.appendChild(newCanvas);
+            caption.appendChild(text);
+            newDiv.appendChild(caption);
+            newDiv.appendChild(newCanvas);
+            resultBlock.appendChild(newDiv);
         }
     }
     function createResultGraph(resultArray, canvasItem, number) {
@@ -227,7 +234,7 @@ window.onload = function () {
         var item, element, string = 'canvasResult__', idName;
         for (item = 0; item <= number-1; item++) {
             idName = string + item;
-            createCanvas(idName);
+            createCanvas(idName, item);
             element = document.getElementById(idName);
             clearAll(element);
             createResultGraph(cycles, element, item);
