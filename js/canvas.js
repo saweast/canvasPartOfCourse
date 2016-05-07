@@ -81,6 +81,9 @@ window.onload = function () {
             drawLine(line.x1, line.y1, line.x2, line.y2, "", canvasElement);
         }
     }
+
+
+
     function drawCircle(x, y, name, canvasElement) {
         var ctx = canvasElement.getContext('2d');
         ctx.beginPath();
