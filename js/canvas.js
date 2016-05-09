@@ -262,7 +262,7 @@ window.onload = function () {
         $.post({
             'async': false,
             'global': false,
-            'url': name+".json",
+            'url': 'data/'+name+".json",
             'dataType': "json",
             'success': function (data) {
                 json = data;
