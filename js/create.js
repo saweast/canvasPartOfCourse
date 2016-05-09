@@ -67,7 +67,6 @@ window.onload = function () {
         var newTopsJSON = JSON.stringify(tops),
             newEdgesJSON = JSON.stringify(edges),
             message = newTopsJSON + '~' + newEdgesJSON;
-        console.log(newEdgesJSON);
         writeToFile(message);
     })
 };

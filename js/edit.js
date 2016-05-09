@@ -29,6 +29,35 @@ function makeSelectImg(imageSrc, imageN, parent) {
         parent.appendChild(option);
     }
 }
+function makeCheckbox(top, tops, edges, parent) {
+    var chlabel, checkbox, textNode, i = 0, j = 0, edge = [], top = top + 1;
+    for (j; j < edges.length; j++) {
+        if (edges[j][0] == top) {
+            edge.push(edges[j][1]);
+        } else if (edges[j][1] == top) {
+            edge.push(edges[j][0]);
+        }
+    }
+    for (i; i < tops.length; i++) {
+
+        chlabel = document.createElement('label');
+        checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        if (top-1 == i) checkbox.setAttribute('disabled', 'disabled');
+        checkbox.setAttribute('class', 'needed');
+        textNode = document.createTextNode(tops[i].name);
+        chlabel.appendChild(checkbox);
+        chlabel.appendChild(textNode);
+        parent.appendChild(chlabel);
+    }
+    makeChecked(parent, edge);
+}
+function makeChecked(parent, checkedElems) {
+    var checkbox = parent.getElementsByClassName('needed');
+    for (var k = 0; k < checkedElems.length; k++) {
+        checkbox[checkedElems[k]-1].checked = true;
+    }
+}
 function makeSelectEdge(top, tops, edges, parent) {
     var option, textNode, i = 0, j = 0, edge = [], top = top + 1;
     for (j; j < edges.length; j++) {
@@ -38,19 +67,20 @@ function makeSelectEdge(top, tops, edges, parent) {
             edge.push(edges[j][0]);
         }
     }
-    // console.log("Вершина: " + top + ' связи: ' + edge);
     for (i; i < tops.length; i++) {
         option = document.createElement('option');
         textNode = document.createTextNode(tops[i].name);
         option.setAttribute('value', i);
-        if (i == top) {
+        if (i == top-1) {
             option.setAttribute('disabled', 'true');
         }
-
-
         option.appendChild(textNode);
         parent.appendChild(option);
     }
+    for (var k = 0; k < edge.length; k++) {
+        parent[edge[k]-1].setAttribute('selected', 'selected');
+    }
+    parent.selectedOptions = edge;
 }
 function createForm(x, y, name, imageN, parent, top, tops, edges) {
     var imageSrc = ['Apartment-Building', 'Contract', 'Factory', 'House', 'House-Rent', 'House-Sale', 'Lands', 'Mortgage', 'Office-Building', 'Swimming-Pool'],
@@ -65,7 +95,8 @@ function createForm(x, y, name, imageN, parent, top, tops, edges) {
         selectImg = document.createElement('select'),
         labelEdge = document.createElement('label'),
         selectEdge = document.createElement('select'),
-        saveButton = document.createElement('button');
+        saveButton = document.createElement('button'),
+        testDiv = document.createElement('div');
 
     labelName.innerHTML = 'Название вершины ';
     inputName.value = name;
@@ -86,13 +117,18 @@ function createForm(x, y, name, imageN, parent, top, tops, edges) {
     makeSelectImg(imageSrc, imageN, selectImg);
     labelSelectImg.appendChild(selectImg);
     form.appendChild(labelSelectImg);
-    labelEdge.innerHTML = "Связь ";
-    selectEdge.className = "edgeSelect";
-    makeSelectEdge(top, tops, edges, selectEdge);
-    selectEdge.setAttribute('multiple', 'true');
-    form.appendChild(selectEdge);
+    labelEdge.innerHTML = "Связи: ";
+    form.appendChild(labelEdge);
+    makeCheckbox(top, tops, edges, testDiv);
+    form.appendChild(testDiv);
+    // selectEdge.className = "edgeSelect";
+    // makeSelectEdge(top, tops, edges, selectEdge);
+    // selectEdge.setAttribute('multiple', 'true');
+    // form.appendChild(selectEdge);
     saveButton.innerHTML = 'Сохранить изменения';
     form.appendChild(saveButton);
+
+
 
     parent.appendChild(form);
 }
