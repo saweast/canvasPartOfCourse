@@ -12,7 +12,7 @@
 </head>
 <head>
     <!--<script src="js/cycles.js"></script>-->
-    <title>Маршруты</title>
+    <title>Создать</title>
 </head>
 <body>
 <div class="wrapper">
@@ -29,6 +29,7 @@
     </header>
     <main>
         <form>
+            <h1>Создание новой вершины</h1>
             <label>Название вершины <input type="text" placeholder="Название" class="inName"></label>
             <label>Координаты<br>
             x: <input type="number" placeholder="от 0 до 500" class="inX"></label>
@@ -49,14 +50,7 @@
                 </select>
             </label>
             <label>Связь
-                <select class="edgeSelect" multiple class="inEdges">
-                    <option value="0">Название 1</option>
-                    <option value="1">Название 2</option>
-                    <option value="2">Название 3</option>
-                    <option value="3">Название 4</option>
-                    <option value="4">Название 5</option>
-                    <option value="5">Название 6</option>
-                    <option value="6">Название 7</option>
+                <select class="edgeSelect" multiple>
                 </select>
             </label>
             <button class="createButton" onclick="return false;">Создать</button>

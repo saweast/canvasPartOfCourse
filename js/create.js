@@ -33,6 +33,17 @@ window.onload = function () {
     var tops = getJSONFile('tops'),
         edges = getJSONFile('edges'),
         createButton = document.getElementsByClassName('createButton')[0];
+    var select = document.getElementsByClassName('edgeSelect')[0],
+        i = 0, op, text, val;
+    for (i; i < tops.length; i++) {
+        val = i;
+        text = document.createTextNode(tops[i].name);
+        op = document.createElement('option');
+        op.appendChild(text);
+        op.setAttribute('value', val);
+        select.appendChild(op);
+    }
+
     var newTop = {
         x: 0,
         y: 0,
@@ -40,7 +51,7 @@ window.onload = function () {
         imageN: 0
     };
     createButton.addEventListener('click', function () {
-        var topLenght = tops.length + 1,
+        var topLength = tops.length + 1,
             i = 0, fromSelect, newEdges, val;
         newTop.x = document.getElementsByClassName('inX')[0].value;
         newTop.y = document.getElementsByClassName('inY')[0].value;
@@ -50,7 +61,7 @@ window.onload = function () {
         fromSelect = document.getElementsByClassName('edgeSelect')[0].selectedOptions;
         for (i; i < fromSelect.length; i++) {
             val = parseInt(fromSelect[i].value) + 1;
-            newEdges = [val, topLenght];
+            newEdges = [val, topLength];
             edges.push(newEdges);
         }
         var newTopsJSON = JSON.stringify(tops),
