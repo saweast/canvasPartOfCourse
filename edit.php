@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/edit.css">
     <link rel="shortcut icon" type="image/png" href="img/logo.png"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Play:700,400&subset=cyrillic' rel='stylesheet' type='text/css'>

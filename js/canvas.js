@@ -54,6 +54,7 @@ window.onload = function () {
     function drawAll(canvasElement) {
         var ctx = canvasElement.getContext('2d');
         ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
         var top = 0,
             edge = 0,
             count = 0,

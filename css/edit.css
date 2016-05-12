@@ -1,0 +1,12 @@
+form {
+    display: none;
+}
+.wrapperTop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 40%;
+}
+.topName {
+    display: inline-block;
+}
