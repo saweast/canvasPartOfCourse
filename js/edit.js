@@ -137,22 +137,17 @@ window.onload = function () {
         tops = getJSONFile('tops'),
         edges = getJSONFile('edges');
     createTops(tops, edges);
-
-    var editHeader = document.getElementsByTagName('h2')[0],
-        editButton = document.getElementsByClassName('editButton')[0],
-        editForm = document.getElementsByClassName('editForm')[0],
-        newDataTop = {
+    // console.log(edges);
+    var newDataTop = {
             x: 0, y: 0, name: '', imageN: 0
         },
         newEdges = [];
-
     main.addEventListener('click', function (event) {
         event.preventDefault();
         var target = event.target, i = 0, index;
         if (target.tagName == 'H2' || target.className == 'editButton') {
             index = $(target).parent().index();
             $(target).parent().find('form').slideToggle();
-
         }
         if (target.className == 'saveButton') {
             index = $(target).parent().parent().index();
@@ -161,16 +156,28 @@ window.onload = function () {
             newDataTop.y = $(target).parent().find('input')[2].value;
             newDataTop.imageN = $(target).parent().find('select')[0].selectedIndex;
             var checkboxes = $(target).parent().find('input[type=checkbox]');
-
+            removeEdges(edges, index+1);
+            removeEdges(edges, index+1);
+            removeEdges(edges, index+1);
             for (i; i < checkboxes.length; i++) {
                 if (checkboxes[i].checked) {
-                    newEdges.push([i+1, index+1]);
+                    edges.push([i+1, index+1]);
                 }
             }
             tops[index] = newDataTop;
-
-            // console.log(newEdges);
+            
         }
     })
 };
+function removeEdges(arr, index) {
+    var i = 0, j = 0;
+    for (i; i < arr.length; i++) {
+        if (arr[i][0] == index || arr[i][1] == index) {
+            // console.log(arr[i][0] + ", " + arr[i][1] + " index: " + index);
+            arr.splice(i, 1);
+            // console.log("удалены: "+rmd);
+        }
+    }
+
+}
 

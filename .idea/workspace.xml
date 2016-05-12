@@ -53,7 +53,7 @@
           <file leaf-file-name="edit.php" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/edit.php">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-171">
+                <state relative-caret-position="-114">
                   <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
                   <folding />
                 </state>
@@ -111,8 +111,8 @@
           <file leaf-file-name="edit.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/edit.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="328">
-                  <caret line="160" column="32" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="32" />
+                <state relative-caret-position="366">
+                  <caret line="167" column="12" selection-start-line="167" selection-start-column="12" selection-end-line="167" selection-end-column="12" />
                   <folding>
                     <element signature="n#!!doc;n#getJSONFile#0" expanded="false" />
                   </folding>
@@ -308,12 +308,12 @@
       <workItem from="1462806459112" duration="22647000" />
       <workItem from="1463077007110" duration="37000" />
       <workItem from="1463078461584" duration="1081000" />
-      <workItem from="1463084536220" duration="4827000" />
+      <workItem from="1463084536220" duration="6926000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="86443000" />
+    <option name="totallyTimeSpent" value="88542000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -614,7 +614,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-171">
+        <state relative-caret-position="-114">
           <caret line="6" column="41" selection-start-line="6" selection-start-column="41" selection-end-line="6" selection-end-column="41" />
           <folding />
         </state>
@@ -650,8 +650,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/edit.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="160" column="32" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="32" />
+        <state relative-caret-position="366">
+          <caret line="167" column="12" selection-start-line="167" selection-start-column="12" selection-end-line="167" selection-end-column="12" />
           <folding>
             <element signature="n#!!doc;n#getJSONFile#0" expanded="false" />
           </folding>
