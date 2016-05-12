@@ -167,8 +167,9 @@ window.onload = function () {
                     newEdges.push([i+1, index+1]);
                 }
             }
-            console.log(newDataTop);
-            console.log(newEdges);
+            tops[index] = newDataTop;
+
+            // console.log(newEdges);
         }
     })
 };
