@@ -15,7 +15,16 @@ function getJSONFile(name) {
     });
     return json;
 }
-
+function writeToFile(str) {
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            // document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+        }
+    };
+    xmlhttp.open("GET", "createHelper.php?q=" + str, true);
+    xmlhttp.send();
+}
 function makeSelectImg(imageSrc, imageN, parent) {
     var option, textNode, i = 0;
     for (i; i < imageSrc.length; i++) {
@@ -55,7 +64,7 @@ function makeCheckbox(top, tops, edges, parent) {
 function makeChecked(parent, checkedElems) {
     var checkbox = parent.getElementsByClassName('needed');
     for (var k = 0; k < checkedElems.length; k++) {
-        checkbox[checkedElems[k]-1].checked = true;
+        checkbox[checkedElems[k]-1].checked = 'checked';
     }
 }
 function createForm(x, y, name, imageN, parent, top, tops, edges) {
@@ -70,7 +79,6 @@ function createForm(x, y, name, imageN, parent, top, tops, edges) {
         labelSelectImg = document.createElement('label'),
         selectImg = document.createElement('select'),
         labelEdge = document.createElement('label'),
-        selectEdge = document.createElement('select'),
         saveButton = document.createElement('button'),
         testDiv = document.createElement('div');
 
@@ -132,16 +140,22 @@ function createTops(tops, edges) {
         createForm(top.x, top.y, top.name, top.imageN, wrap, i, tops, edges);
     }
 }
+function removeEdges(arr, index) {
+    var i = 0;
+    for (i; i < arr.length; i++) {
+        if (arr[i][0] == index || arr[i][1] == index) {
+            arr.splice(i, 1);
+        }
+    }
+}
 window.onload = function () {
     var main = document.getElementsByTagName('main')[0],
         tops = getJSONFile('tops'),
         edges = getJSONFile('edges');
     createTops(tops, edges);
-    // console.log(edges);
     var newDataTop = {
             x: 0, y: 0, name: '', imageN: 0
-        },
-        newEdges = [];
+        };
     main.addEventListener('click', function (event) {
         event.preventDefault();
         var target = event.target, i = 0, index;
@@ -165,19 +179,10 @@ window.onload = function () {
                 }
             }
             tops[index] = newDataTop;
-            
+            var message = JSON.stringify(tops) + '~' + JSON.stringify(edges);
+            writeToFile(message);
         }
     })
 };
-function removeEdges(arr, index) {
-    var i = 0, j = 0;
-    for (i; i < arr.length; i++) {
-        if (arr[i][0] == index || arr[i][1] == index) {
-            // console.log(arr[i][0] + ", " + arr[i][1] + " index: " + index);
-            arr.splice(i, 1);
-            // console.log("удалены: "+rmd);
-        }
-    }
 
-}
 
