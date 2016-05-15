@@ -23,6 +23,11 @@
                 <img src="img/logo.png" alt="">
             </a>
         </div>
+        <nav>
+            <a href="index.php">index</a>
+            <a href="edit.php">edit</a>
+            <a href="create.php">create</a>
+        </nav>
         <div class="creator">
             <p>Лаворчук Вадим Игоревич</p>
             <p>студент 326ст группы</p>

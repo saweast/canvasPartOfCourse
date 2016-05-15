@@ -48,7 +48,6 @@ function makeCheckbox(top, tops, edges, parent) {
         }
     }
     for (i; i < tops.length; i++) {
-
         chlabel = document.createElement('label');
         checkbox = document.createElement('input');
         checkbox.setAttribute('type', 'checkbox');
@@ -64,8 +63,12 @@ function makeCheckbox(top, tops, edges, parent) {
 function makeChecked(parent, checkedElems) {
     var checkbox = parent.getElementsByClassName('needed');
     for (var k = 0; k < checkedElems.length; k++) {
-        checkbox[checkedElems[k]-1].checked = 'checked';
+        checkbox[checkedElems[k]-1].checked = true;
     }
+}
+function makeCha(elem) {
+    console.log(elem.checked)
+    $(elem).prop('checked', $(!elem).prop('checked'));
 }
 function createForm(x, y, name, imageN, parent, top, tops, edges) {
     var imageSrc = ['Apartment-Building', 'Contract', 'Factory', 'House', 'House-Rent', 'House-Sale', 'Lands', 'Mortgage', 'Office-Building', 'Swimming-Pool'],
@@ -111,7 +114,6 @@ function createForm(x, y, name, imageN, parent, top, tops, edges) {
     form.appendChild(saveButton);
     parent.appendChild(form);
 }
-
 function createTops(tops, edges) {
     var i = 0,
         wrap, blockName, blockNameText,
@@ -182,7 +184,15 @@ window.onload = function () {
             var message = JSON.stringify(tops) + '~' + JSON.stringify(edges);
             writeToFile(message);
         }
-    })
+    });
+    var checkboxes = document.getElementsByClassName('needed'), o = 0;
+    for (o; o < checkboxes.length; o++) {
+        checkboxes[o].addEventListener('click', function (event) {
+            event.preventDefault();
+            makeCha(event.target);
+        })
+    }
+
 };
 
 

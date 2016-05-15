@@ -39,6 +39,10 @@ window.onload = function () {
     canvas.addEventListener('mouseup', function (event) {
         drag = false;
         currElement = '';
+        var newTopsJSON = JSON.stringify(tops),
+            newEdgesJSON = JSON.stringify(edges),
+            message = newTopsJSON + '~' + newEdgesJSON;
+        writeToFile(message);
     });
     canvas.addEventListener('mousemove', function (event) {
         if (drag) {
@@ -288,6 +292,14 @@ window.onload = function () {
         ctx.closePath();
     }
 
-
-
+    function writeToFile(str) {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                // document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            }
+        };
+        xmlhttp.open("GET", "createHelper.php?q=" + str, true);
+        xmlhttp.send();
+    }
 };
