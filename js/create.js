@@ -67,6 +67,19 @@ window.onload = function () {
         var newTopsJSON = JSON.stringify(tops),
             newEdgesJSON = JSON.stringify(edges),
             message = newTopsJSON + '~' + newEdgesJSON;
-        writeToFile(message);
+        if (newTop.x == '' || newTop.y == '' || newTop.name == '' || newTop.imageN == -1) {
+            $('form').toggleClass('err');
+            setTimeout(function () {
+                $('form').toggleClass('err');
+            }, 2000);
+        } else {
+            writeToFile(message);
+            $('form').toggleClass('suc');
+            setTimeout(function () {
+                $('form').toggleClass('suc');
+                location.reload();
+            }, 2000);
+        }
+
     })
 };

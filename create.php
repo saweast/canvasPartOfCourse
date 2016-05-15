@@ -23,9 +23,9 @@
             </a>
         </div>
         <nav>
-            <a href="index.php">index</a>
-            <a href="edit.php">edit</a>
-            <a href="create.php">create</a>
+            <a href="index.php">Главная</a>
+            <a href="edit.php">Редактирование</a>
+            <a href="create.php">Создание</a>
         </nav>
         <div class="creator">
             <p>Лаворчук Вадим Игоревич</p>

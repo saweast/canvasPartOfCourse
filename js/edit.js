@@ -38,7 +38,7 @@ function makeSelectImg(imageSrc, imageN, parent) {
         parent.appendChild(option);
     }
 }
-function makeCheckbox(top, tops, edges, parent) {
+function makeCheckbox(top, tops, edges, parent, uniq) {
     var chlabel, checkbox, textNode, i = 0, j = 0, edge = [], top = top + 1;
     for (j; j < edges.length; j++) {
         if (edges[j][0] == top) {
@@ -49,26 +49,39 @@ function makeCheckbox(top, tops, edges, parent) {
     }
     for (i; i < tops.length; i++) {
         chlabel = document.createElement('label');
+        chlabel.setAttribute('for', 'checkbox_'+i+j+'_'+uniq);
         checkbox = document.createElement('input');
+        checkbox.setAttribute('id', 'checkbox_'+i+j+'_'+uniq);
         checkbox.setAttribute('type', 'checkbox');
-        if (top-1 == i) checkbox.setAttribute('disabled', 'disabled');
         checkbox.setAttribute('class', 'needed');
+        if (top-1 == i) checkbox.setAttribute('disabled', 'disabled');
+        chlabel.addEventListener('click', function (event) {
+            makeCha(event.target);
+        });
         textNode = document.createTextNode(tops[i].name);
-        chlabel.appendChild(checkbox);
-        chlabel.appendChild(textNode);
+        parent.appendChild(checkbox);
         parent.appendChild(chlabel);
+        parent.appendChild(textNode);
+
     }
     makeChecked(parent, edge);
 }
 function makeChecked(parent, checkedElems) {
     var checkbox = parent.getElementsByClassName('needed');
     for (var k = 0; k < checkedElems.length; k++) {
-        checkbox[checkedElems[k]-1].checked = true;
+        checkbox[checkedElems[k]-1].defaultChecked = true;
     }
 }
 function makeCha(elem) {
-    console.log(elem.checked)
-    $(elem).prop('checked', $(!elem).prop('checked'));
+    var id = elem.getAttribute('for'),
+        input = document.getElementById(id);
+    console.log(id + ":::" + input.getAttribute('id'));
+    document.getElementById(id).checked = !document.getElementById(id).checked;
+    if (input.hasAttribute('checked')) {
+        input.removeAttribute('checked');
+    } else {
+        input.setAttribute('checked', 'checked')
+    }
 }
 function createForm(x, y, name, imageN, parent, top, tops, edges) {
     var imageSrc = ['Apartment-Building', 'Contract', 'Factory', 'House', 'House-Rent', 'House-Sale', 'Lands', 'Mortgage', 'Office-Building', 'Swimming-Pool'],
@@ -82,6 +95,7 @@ function createForm(x, y, name, imageN, parent, top, tops, edges) {
         labelSelectImg = document.createElement('label'),
         selectImg = document.createElement('select'),
         labelEdge = document.createElement('label'),
+        removeButton = document.createElement('button'),
         saveButton = document.createElement('button'),
         testDiv = document.createElement('div');
 
@@ -107,11 +121,14 @@ function createForm(x, y, name, imageN, parent, top, tops, edges) {
     form.appendChild(labelSelectImg);
     labelEdge.innerHTML = "Связи: ";
     form.appendChild(labelEdge);
-    makeCheckbox(top, tops, edges, testDiv);
+    makeCheckbox(top, tops, edges, testDiv, Math.random());
     form.appendChild(testDiv);
-    saveButton.innerHTML = 'Сохранить изменения';
+    saveButton.innerHTML = 'Сохранить';
     saveButton.setAttribute('class', 'saveButton');
     form.appendChild(saveButton);
+    removeButton.innerHTML = 'Удалить';
+    removeButton.setAttribute('class', 'removeButton');
+    form.appendChild(removeButton);
     parent.appendChild(form);
 }
 function createTops(tops, edges) {
@@ -150,6 +167,16 @@ function removeEdges(arr, index) {
         }
     }
 }
+function decrement(arr, index) {
+    var index = index + 1;
+    for (var i in arr) {
+        for (var j in arr[i]) {
+            if (arr[i][j] >= index) {
+                arr[i][j] = arr[i][j] - 1;
+            }
+        }
+    }
+}
 window.onload = function () {
     var main = document.getElementsByTagName('main')[0],
         tops = getJSONFile('tops'),
@@ -160,10 +187,11 @@ window.onload = function () {
         };
     main.addEventListener('click', function (event) {
         event.preventDefault();
-        var target = event.target, i = 0, index;
+        var target = event.target, i = 0, index, indexRm, messageRm;
         if (target.tagName == 'H2' || target.className == 'editButton') {
             index = $(target).parent().index();
             $(target).parent().find('form').slideToggle();
+            $(target).parent().find('form').toggleClass('activeForm');
         }
         if (target.className == 'saveButton') {
             index = $(target).parent().parent().index();
@@ -183,16 +211,34 @@ window.onload = function () {
             tops[index] = newDataTop;
             var message = JSON.stringify(tops) + '~' + JSON.stringify(edges);
             writeToFile(message);
+            $(target).parent().parent().toggleClass('suc');
+            setTimeout(function () {
+                $(target).parent().parent().toggleClass('suc');
+                location.reload();
+            }, 1500);
+
+        }
+        if (target.className == 'removeButton') {
+            indexRm = $(target).parent().parent().index();
+            // console.log(edges + '');
+            tops.splice(indexRm, 1);
+            removeEdges(edges, indexRm+1);
+            removeEdges(edges, indexRm+1);
+            removeEdges(edges, indexRm+1);
+            removeEdges(edges, indexRm+1);
+            removeEdges(edges, indexRm+1);
+            decrement(edges, indexRm);
+            // console.log(edges + '');
+            messageRm = JSON.stringify(tops) + '~' + JSON.stringify(edges);
+            writeToFile(messageRm);
+            $(target).parent().parent().toggleClass('rem');
+            setTimeout(function () {
+                $(target).parent().parent().toggleClass('rem');
+                location.reload();
+            }, 2000);
         }
     });
-    var checkboxes = document.getElementsByClassName('needed'), o = 0;
-    for (o; o < checkboxes.length; o++) {
-        checkboxes[o].addEventListener('click', function (event) {
-            event.preventDefault();
-            makeCha(event.target);
-        })
-    }
-
 };
+
 
 

@@ -45,6 +45,7 @@ main {
     margin: auto;
     align-items: center;
     justify-content: center;
+    min-height: 600px;
 }
 main h1 {
     color: #515151;
@@ -110,8 +111,128 @@ footer {
     align-self: flex-end;
     margin-right: 10%;
 }
+header nav {
+    display: flex;
+    width: 25%;
+    justify-content: space-between;
+    align-items: center;
+}
+nav a {
+    color: white;
+    text-transform: uppercase;
+
+}
 label {
     display: block;
 }
 
+input[type=checkbox] {
+    display:none;
+}
 
+input[type=checkbox] + label
+{
+    background: #999;
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    padding: 0 0 0 0;
+    cursor: pointer;
+}
+input[type=checkbox]:checked + label
+{
+    background: #0080FF;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    padding: 0 0 0 0;
+}
+.wrapperTop {
+    align-items: center;
+}
+.wrapperTop h2 {
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: #515151;
+}
+input, select {
+    border-radius: 20px;
+    border: 1px solid #512218;
+    transition: .3s;
+    outline: none;
+    padding: 2px 5px;
+    margin-bottom: 5px;
+}
+input:active {
+
+}
+.editButton,
+.saveButton,
+.removeButton,
+.createButton {
+    border-radius: 20px;
+    text-transform: uppercase;
+    outline: none;
+    padding: 5px 10px;
+    background: #515151;
+    color: white;
+    border: 1px solid #512218;
+    transition: .3s;
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+}
+.editButton:hover,
+.saveButton:hover,
+.removeButton:hover,
+.createButton:hover {
+    background: #510f09;
+    color: #fff306;
+    border: 1px solid rgba(255, 101, 76, 0.69);
+}
+.wrapperTop {
+    transition: .3s;
+}
+.suc {
+    background: rgba(0, 128, 0, 0.58);
+    color: yellow;
+    border-radius: 20px;
+}
+.suc input,
+.suc button,
+.suc select,
+.suc h2{
+    background: rgba(0, 128, 0, 0.3);
+    color: yellow;
+}
+.err {
+    background: rgba(255, 0, 0, 0.55);
+    color: black;
+    border-radius: 20px;
+}
+.err input,
+.err button,
+.err select,
+.err h2{
+    background: rgba(255, 0, 0, 0.55);
+    color: black;
+}
+.rem {
+    background: rgba(255, 255, 0, 0.53);
+    color: green;
+    border-radius: 20px;
+}
+.rem input,
+.rem button,
+.rem select,
+.rem h2{
+    background: rgba(255, 255, 0, 0.53);
+    color: green;
+}
+.wrapperTop form.activeForm{
+    margin-top: 10px;
+    display: flex!important;
+    justify-content: center;
+    flex-direction: column;
+}

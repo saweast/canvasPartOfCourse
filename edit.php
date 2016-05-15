@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/edit.css">
+    <link rel="stylesheet" href="css/global.css">
     <link rel="shortcut icon" type="image/png" href="img/logo.png"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Play:700,400&subset=cyrillic' rel='stylesheet' type='text/css'>
@@ -24,9 +24,9 @@
             </a>
         </div>
         <nav>
-            <a href="index.php">index</a>
-            <a href="edit.php">edit</a>
-            <a href="create.php">create</a>
+            <a href="index.php">Главная</a>
+            <a href="edit.php">Редактирование</a>
+            <a href="create.php">Создание</a>
         </nav>
         <div class="creator">
             <p>Лаворчук Вадим Игоревич</p>
