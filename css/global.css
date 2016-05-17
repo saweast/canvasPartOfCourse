@@ -110,6 +110,7 @@ footer {
 .rights {
     align-self: flex-end;
     margin-right: 10%;
+    color: rgba(83, 115, 198, 0.1);
 }
 header nav {
     display: flex;

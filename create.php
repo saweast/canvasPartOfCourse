@@ -17,20 +17,15 @@
 <body>
 <div class="wrapper">
     <header>
-        <div class="logo">
-            <a href="#">
-                <img src="img/logo.png" alt="">
-            </a>
-        </div>
-        <nav>
-            <a href="index.php">Главная</a>
-            <a href="edit.php">Редактирование</a>
-            <a href="create.php">Создание</a>
-        </nav>
-        <div class="creator">
-            <p>Лаворчук Вадим Игоревич</p>
-            <p>студент 326ст группы</p>
-        </div>
+    <nav>
+        <a href="index.php">Главная</a>
+        <a href="edit.php">Редактирование</a>
+        <a href="create.php">Создание</a>
+    </nav>
+    <div class="creator">
+        <p>Подгорный Ярослав Викторович</p>
+        <p>студент 326ст группы</p>
+    </div>
     </header>
     <main>
         <form>
@@ -42,16 +37,16 @@
             <label for="">Изображение
                 <select class="imageSelect">
                     <option selected disabled>Выберите картинку</option>
-                    <option value="0">Apartment-Building</option>
-                    <option value="1">Contract</option>
-                    <option value="2">Factory</option>
-                    <option value="3">House</option>
-                    <option value="4">House-Rent</option>
-                    <option value="5">House-Sale</option>
-                    <option value="6">Lands</option>
-                    <option value="7">Mortgage</option>
-                    <option value="8">Office-Building</option>
-                    <option value="9">Swimming-Pool</option>
+                    <option value="0">APUNAH</option>
+                    <option value="1">BART</option>
+                    <option value="2">DRHIBB</option>
+                    <option value="3">HOMER</option>
+                    <option value="4">KENTBR</option>
+                    <option value="5">LISA</option>
+                    <option value="6">MAGGIE</option>
+                    <option value="7">MARGE</option>
+                    <option value="8">MILHOU</option>
+                    <option value="9">POLICE</option>
                 </select>
             </label>
             <label>Связь
@@ -64,9 +59,8 @@
     <footer>
         <div class="socSet">
             <ul>
-                <li><a href="http://vk.com/teadrinker95"><img src="img/vk.png" alt="vk"></a></li>
-                <li><a href="https://twitter.com/teadrinker95"><img src="img/twitter.png" alt="twitter"></a></li>
-                <li>lavorchukvadim@gmail.com</li>
+                <li><a href="http://new.vk.com/jasik1995"><img src="img/vk.png" alt="vk"></a></li>
+                <li>jasik2909@gmail.com</li>
             </ul>
         </div>
         <div class="rights">&COPY TeaDrinker</div>

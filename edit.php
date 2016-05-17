@@ -18,18 +18,13 @@
 <body>
 <div class="wrapper">
     <header>
-        <div class="logo">
-            <a href="#">
-                <img src="img/logo.png" alt="">
-            </a>
-        </div>
         <nav>
             <a href="index.php">Главная</a>
             <a href="edit.php">Редактирование</a>
             <a href="create.php">Создание</a>
         </nav>
         <div class="creator">
-            <p>Лаворчук Вадим Игоревич</p>
+            <p>Подгорный Ярослав Викторович</p>
             <p>студент 326ст группы</p>
         </div>
     </header>
@@ -39,9 +34,8 @@
     <footer>
         <div class="socSet">
             <ul>
-                <li><a href="http://vk.com/teadrinker95"><img src="img/vk.png" alt="vk"></a></li>
-                <li><a href="https://twitter.com/teadrinker95"><img src="img/twitter.png" alt="twitter"></a></li>
-                <li>lavorchukvadim@gmail.com</li>
+                <li><a href="http://new.vk.com/jasik1995"><img src="img/vk.png" alt="vk"></a></li>
+                <li>jasik2909@gmail.com</li>
             </ul>
         </div>
         <div class="rights">&COPY TeaDrinker</div>

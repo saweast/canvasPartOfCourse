@@ -84,7 +84,7 @@ function makeCha(elem) {
     }
 }
 function createForm(x, y, name, imageN, parent, top, tops, edges) {
-    var imageSrc = ['Apartment-Building', 'Contract', 'Factory', 'House', 'House-Rent', 'House-Sale', 'Lands', 'Mortgage', 'Office-Building', 'Swimming-Pool'],
+    var imageSrc = ['APUNAH', 'BART', 'DRHIBB', 'HOMER', 'KENTBR', 'LISA', 'MAGGIE', 'MARGE', 'MILHOU', 'POLICE'],
         form = document.createElement('form'),
         labelName = document.createElement('label'),
         inputName = document.createElement('input'),

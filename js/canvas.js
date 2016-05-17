@@ -7,7 +7,7 @@ window.onload = function () {
         edges = getJSONFile('edges'),
         weight = getJSONFile('weight'),
         radius = 5,
-        imageSrc = ['Apartment-Building', 'Contract', 'Factory', 'House', 'House-Rent', 'House-Sale', 'Lands', 'Mortgage', 'Office-Building', 'Swimming-Pool'],
+        imageSrc = ['APUNAH', 'BART', 'DRHIBB', 'HOMER', 'KENTBR', 'LISA', 'MAGGIE', 'MARGE', 'MILHOU', 'POLICE'],
         lineColor = '#515151',
         lineDescrColor = 'rgba(0, 0, 255, 1)',
         lineDescrFont = '12px Noto sans',
@@ -275,7 +275,7 @@ window.onload = function () {
         img.onload = function(){
             ctx.drawImage(img, x-18, y-18, 36, 36);
         };
-        img.src = 'img/'+imageSrc+'.png' || 'img/airplane-shape.png';
+        img.src = 'img/'+imageSrc+'.ico';
         ctx.font = circleNameFont;
         ctx.textAlign = 'center';
         ctx.fillStyle = circleNameColor;
