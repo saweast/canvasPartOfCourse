@@ -12,7 +12,7 @@
 }
 header {
     display: flex;
-    background: #515151;
+    background: rgba(83, 115, 198, 1);
     justify-content: space-around;
 }
 header .logo {
@@ -48,13 +48,13 @@ main {
     min-height: 600px;
 }
 main h1 {
-    color: #515151;
+    color: rgba(83, 115, 198, 0.9);;
     margin: 5px auto 0;
 }
 main button.makeResult {
     outline: none;
     background: #9D8E8E;
-    color: #515151;
+    color: rgba(83, 115, 198, 0.9);
     text-transform: uppercase;
     font-size: 2em;
     font-family: 'Play', sans-serif;
@@ -63,7 +63,7 @@ main button.makeResult {
     transition: .3s;
 }
 main button.makeResult:hover {
-    background: #515151;
+    background: rgba(83, 115, 198, 0.9);
     color: #9D8E8E;
     font-size: 2.2em;
 }
@@ -75,7 +75,7 @@ main button.makeResult:hover {
 }
 .result_canvas p {
     text-align: center;
-    color: #515151;
+    color: rgba(83, 115, 198, 0.9);
     text-transform: uppercase;
 }
 footer li {
@@ -84,7 +84,7 @@ footer li {
 footer {
     display: flex;
     justify-content: space-between;
-    background: #515151;
+    background: rgba(83, 115, 198, 0.9);
     margin-top: 5px;
     padding: 15px 0;
     color: white;
@@ -154,7 +154,7 @@ input[type=checkbox]:checked + label
 .wrapperTop h2 {
     margin-top: 10px;
     margin-bottom: 0;
-    color: #515151;
+    color: rgba(83, 115, 198, 0.9);
 }
 input, select {
     border-radius: 20px;
@@ -235,4 +235,55 @@ input:active {
     display: flex!important;
     justify-content: center;
     flex-direction: column;
+}
+
+.modal {
+    display: none;
+    background: rgba(40, 90, 119, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+.modal__wrapper {
+    position: fixed;
+    top: 40%;
+    bottom: 40%;
+    left: 30%;
+    right: 30%;
+    border-radius: 50px;
+    background: rgba(83, 115, 198, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal__text {
+    color: #001f6f;
+    text-transform: uppercase;
+    font-size: 2em;
+}
+.info__block {
+    display: none;
+}
+.planar {
+    width: 46.7%;
+    padding: 10px;
+    text-transform: uppercase;
+}
+.info {
+    width: 46.7%;
+    box-sizing: border-box;
+}
+.info img {
+    width: 100%;
+}
+.info__button {
+    display: inline-block;
+    width: 50%;
+    margin:0;
+    float: left;
+}
+canvas {
+    border: 1px solid rgba(81, 81, 81, 0.6);
 }

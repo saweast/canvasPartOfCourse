@@ -297,14 +297,33 @@ window.onload = function () {
     planar.addEventListener('click', function (event) {
         planarnost(tops, edges);
     });
-
+    var modal = document.getElementsByClassName('modal')[0],
+        modalText = modal.getElementsByClassName('modal__text')[0];
+    modal.addEventListener('click', function (event) {
+        var target = event.target;
+        if (target.className == 'modal' || target.className == 'modal__text' || target.className == 'modal__wrapper'){
+            $(modal).fadeOut();
+        }
+    });
     function planarnost(tops, edges) {
         var topN = tops.length,
             edgeN = edges.length;
         if (edgeN <= (3 * topN - 6)) {
-            alert("Я планарный")
+            modalText.innerHTML = 'Граф планарный';
+            $(modal).fadeToggle();
         } else {
-            alert('Я не планарный')
+            modalText.innerHTML = 'Граф не планарный';
+            $(modal).fadeToggle();
         }
     }
+    var info = document.getElementsByClassName('info')[0],
+        infoBlock = info.getElementsByClassName('info__block');
+    info.addEventListener('click', function (event) {
+        var target = event.target, index;
+        if (target.className == 'info__button') {
+            index = $(target).index();
+            $(infoBlock[index]).fadeToggle();
+            $(infoBlock[index]).siblings().fadeOut();
+        }
+    })
 };

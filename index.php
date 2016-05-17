@@ -16,34 +16,46 @@
 <body>
 <div class="wrapper">
     <header>
-        <div class="logo">
-            <a href="#">
-                <img src="img/logo.png" alt="">
-            </a>
-        </div>
         <nav>
             <a href="index.php">Главная</a>
             <a href="edit.php">Редактирование</a>
             <a href="create.php">Создание</a>
         </nav>
         <div class="creator">
-            <p>Лаворчук Вадим Игоревич</p>
+            <p>Подгорный Ярослав Викторович</p>
             <p>студент 326ст группы</p>
         </div>
     </header>
     <main>
-        <h1>Нахождение всех возможных маршрутов</h1>
+        <h1>Проверка графа на планарность</h1>
         <canvas class="mainDraw" width="500" height="500"></canvas>
-        <button class="makeResult">Найти все маршруты</button>
+        <button class="makeResult" style="display: none">Найти все маршруты</button>
         <div class="result"></div>
         <button class="planar">Проверить на планарность</button>
+        <div class="info">
+            <button class="info__button">Информация</button>
+            <button class="info__button">Примеры</button>
+            <div class="info__wrapper">
+                <div class="info__block">
+                    <img src="img/info.jpg" alt="">
+                </div>
+                <div class="info__block">
+                    <img src="img/exampl.jpg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="modal">
+            <div class="modal__wrapper">
+                <p class="modal__text">Граф планарный</p>
+            </div>
+        </div>
     </main>
     <footer>
         <div class="socSet">
             <ul>
-                <li><a href="http://vk.com/teadrinker95"><img src="img/vk.png" alt="vk"></a></li>
-                <li><a href="https://twitter.com/teadrinker95"><img src="img/twitter.png" alt="twitter"></a></li>
-                <li>lavorchukvadim@gmail.com</li>
+                <li><a href="http://new.vk.com/jasik1995"><img src="img/vk.png" alt="vk"></a></li>
+                <li>jasik2909@gmail.com</li>
             </ul>
         </div>
         <div class="rights">&COPY TeaDrinker</div>
