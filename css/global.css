@@ -168,30 +168,7 @@ input, select {
 input:active {
 
 }
-.editButton,
-.saveButton,
-.removeButton,
-.createButton {
-    border-radius: 20px;
-    text-transform: uppercase;
-    outline: none;
-    padding: 5px 10px;
-    background: #515151;
-    color: white;
-    border: 1px solid #512218;
-    transition: .3s;
-    margin-top: 5px;
-    display: block;
-    width: 100%;
-}
-.editButton:hover,
-.saveButton:hover,
-.removeButton:hover,
-.createButton:hover {
-    background: #510f09;
-    color: #fff306;
-    border: 1px solid rgba(255, 101, 76, 0.69);
-}
+
 .wrapperTop {
     transition: .3s;
 }
@@ -230,6 +207,34 @@ input:active {
 .rem h2{
     background: rgba(255, 255, 0, 0.53);
     color: green;
+}
+.planar,
+.info__button,
+.editButton,
+.saveButton,
+.removeButton,
+.createButton {
+    border-radius: 20px;
+    text-transform: uppercase;
+    outline: none;
+    padding: 5px 10px;
+    background: rgba(83, 115, 198, 0.8);
+    color: white;
+    background: rgba(83, 115, 198, 1);
+    transition: .3s;
+    margin-top: 5px;
+    display: block;
+    width: 100%;
+}
+.planar:hover,
+.info__button:hover,
+.editButton:hover,
+.saveButton:hover,
+.removeButton:hover,
+.createButton:hover {
+    background: rgba(83, 115, 198, 0.8);
+    color: black;
+    border: 1px solid rgba(255, 101, 76, 0.69);
 }
 .wrapperTop form.activeForm{
     margin-top: 10px;
@@ -279,11 +284,15 @@ input:active {
 .info img {
     width: 100%;
 }
+.planar {
+    border-radius: 0;
+}
 .info__button {
     display: inline-block;
     width: 50%;
     margin:0;
     float: left;
+    border-radius: 0;
 }
 canvas {
     border: 1px solid rgba(81, 81, 81, 0.6);
