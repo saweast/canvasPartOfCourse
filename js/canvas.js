@@ -86,9 +86,6 @@ window.onload = function () {
             drawLine(line.x1, line.y1, line.x2, line.y2, "", canvasElement);
         }
     }
-
-
-
     function drawCircle(x, y, name, canvasElement) {
         var ctx = canvasElement.getContext('2d');
         ctx.beginPath();
@@ -118,8 +115,8 @@ window.onload = function () {
         ctx.closePath();
     }
 
-    var cycles = [];
 
+    var cycles = [];
     function findAllCycles() {
         var i, j, len;
         for (i = 0; i < edges.length; i++) {
@@ -128,8 +125,7 @@ window.onload = function () {
                 findNewCycles( [edge[j]] );
             }
         }
-    };
-
+    }
     function findNewCycles(path) {
         var startNode = path[0],
             nextNode;
@@ -157,12 +153,10 @@ window.onload = function () {
             }
         }
     }
-
 // check if vertex n is contained in path
     function visited(node, path) {
         return (path.indexOf(node) !== -1);
     }
-
     function isNew(path, cycles) {
         for (var i = 0; i < cycles.length; i++) {
             if ( equal(path, cycles[i]) ) {
@@ -172,7 +166,6 @@ window.onload = function () {
 
         return true;
     }
-
     function equal(path1, path2) {
         if (path1.length !== path2.length) {
             return false;
@@ -192,7 +185,9 @@ window.onload = function () {
         }
 
         return true;
-    };
+    }
+
+
     drawAll(canvas);
     findAllCycles();
     function createCanvas(idName, item) {
@@ -255,12 +250,9 @@ window.onload = function () {
     var justDoIt = document.getElementsByClassName('makeResult')[0];
     justDoIt.addEventListener('click', function () {
         makeResult(cycles.length, cycles);
-        // сюда надо реквест делать
-        // console.log(JSON.stringify(tops));
         for (item in tops) {
             $.post( "", tops[item]);
         }
-
     });
     function getJSONFile(name) {
         var json = null;
@@ -276,7 +268,6 @@ window.onload = function () {
         return json;
     }
 
-
     function drawImage(x, y, name, canvasElement, imageSrc) {
         var ctx = canvasElement.getContext('2d');
         ctx.beginPath();
@@ -291,7 +282,6 @@ window.onload = function () {
         ctx.fillText(name, x, y-15);
         ctx.closePath();
     }
-
     function writeToFile(str) {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
@@ -301,5 +291,20 @@ window.onload = function () {
         };
         xmlhttp.open("GET", "createHelper.php?q=" + str, true);
         xmlhttp.send();
+    }
+
+    var planar = document.getElementsByClassName('planar')[0];
+    planar.addEventListener('click', function (event) {
+        planarnost(tops, edges);
+    });
+
+    function planarnost(tops, edges) {
+        var topN = tops.length,
+            edgeN = edges.length;
+        if (edgeN <= (3 * topN - 6)) {
+            alert("Я планарный")
+        } else {
+            alert('Я не планарный')
+        }
     }
 };

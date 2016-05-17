@@ -11,7 +11,6 @@
     <script src="js/canvas.js"></script>
 </head>
 <head>
-    <!--<script src="js/cycles.js"></script>-->
     <title>Маршруты</title>
 </head>
 <body>
@@ -37,6 +36,7 @@
         <canvas class="mainDraw" width="500" height="500"></canvas>
         <button class="makeResult">Найти все маршруты</button>
         <div class="result"></div>
+        <button class="planar">Проверить на планарность</button>
     </main>
     <footer>
         <div class="socSet">
