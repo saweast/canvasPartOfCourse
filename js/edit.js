@@ -162,7 +162,7 @@ function createTops(tops, edges) {
 function removeEdges(arr, index) {
     var i = 0;
     for (i; i < arr.length; i++) {
-        if (arr[i][0] == index || arr[i][1] == index) {
+        if (arr[i][0] == index || arr[i][1] == index || arr[i][0] == arr[i][1]) {
             arr.splice(i, 1);
         }
     }
