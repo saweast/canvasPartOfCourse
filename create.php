@@ -18,7 +18,7 @@
 <div class="wrapper">
     <header>
         <div class="logo">
-            <a href="#">
+            <a href="https://github.com/teadrinker95/canvasPartOfCourse">
                 <img src="img/logo.png" alt="">
             </a>
         </div>

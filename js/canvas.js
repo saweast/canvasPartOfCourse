@@ -199,7 +199,7 @@ window.onload = function () {
         var newDiv = document.createElement('div');
         newDiv.setAttribute('class', 'result_canvas');
         var caption = document.createElement('p');
-        var text = document.createTextNode('Маршрут #'+(item+1));
+        var text = document.createTextNode('Цикл #'+(item+1));
         var newCanvas = document.createElement('canvas');
         newCanvas.setAttribute('width', ''+canvasWidth / 2+'');
         newCanvas.setAttribute('height', ''+canvasHeight / 2+'');

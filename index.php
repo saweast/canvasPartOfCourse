@@ -18,7 +18,7 @@
 <div class="wrapper">
     <header>
         <div class="logo">
-            <a href="#">
+            <a href="https://github.com/teadrinker95/canvasPartOfCourse">
                 <img src="img/logo.png" alt="">
             </a>
         </div>
@@ -33,9 +33,9 @@
         </div>
     </header>
     <main>
-        <h1>Нахождение всех возможных маршрутов</h1>
+        <h1>Нахождение всех возможных циклов</h1>
         <canvas class="mainDraw" width="500" height="500"></canvas>
-        <button class="makeResult">Найти все маршруты</button>
+        <button class="makeResult">Найти все циклы</button>
         <div class="result"></div>
     </main>
     <footer>
