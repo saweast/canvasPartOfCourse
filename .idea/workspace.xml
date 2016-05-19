@@ -25,7 +25,22 @@
     <favorites_list name="Canvas" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf />
+=======
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="global.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/global.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="188">
+              <caret line="107" column="34" selection-start-line="107" selection-start-column="34" selection-end-line="107" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+>>>>>>> parent of badeb15... last push
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -246,14 +261,22 @@
       <workItem from="1463135240149" duration="223000" />
       <workItem from="1463318605832" duration="20795000" />
       <workItem from="1463380758978" duration="603000" />
+<<<<<<< HEAD
       <workItem from="1463509156126" duration="8919000" />
       <workItem from="1463561804598" duration="1896000" />
       <workItem from="1463594615290" duration="24000" />
+=======
+      <workItem from="1463509156126" duration="8008000" />
+>>>>>>> parent of badeb15... last push
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="121936000" />
+=======
+    <option name="totallyTimeSpent" value="119105000" />
+>>>>>>> parent of badeb15... last push
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="784" extended-state="6" />
@@ -555,8 +578,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/global.css">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="145">
           <caret line="229" column="19" selection-start-line="229" selection-start-column="19" selection-end-line="229" selection-end-column="19" />
+=======
+        <state relative-caret-position="188">
+          <caret line="107" column="34" selection-start-line="107" selection-start-column="34" selection-end-line="107" selection-end-column="34" />
+          <folding />
+>>>>>>> parent of badeb15... last push
         </state>
       </provider>
     </entry>
