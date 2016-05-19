@@ -279,7 +279,7 @@ window.onload = function () {
         ctx.font = circleNameFont;
         ctx.textAlign = 'center';
         ctx.fillStyle = circleNameColor;
-        ctx.fillText(name, x, y-15);
+        ctx.fillText(name, x, y-20);
         ctx.closePath();
     }
     function writeToFile(str) {
